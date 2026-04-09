@@ -1,0 +1,10 @@
+.header-logo {
+    width: 100px;
+    height: 100px;
+}
+header {
+    display: flex;
+    background: #f2ec33;
+    background: linear-gradient(87deg, rgba(242, 236, 51, 1) 5%, rgba(180, 235, 131, 1) 57%, rgba(103, 171, 48, 1) 94%);;
+    justify-content: space-between;
+}
