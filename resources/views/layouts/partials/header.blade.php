@@ -1,7 +1,7 @@
-<header>
+<header class="flex justify-between items-center p-4 w-full bg-amber-300">
     <div>
         <a href="{{route('products.index')}}">
-            <img class="header-logo" src="{{asset('images/header-logo.png')}}" alt="header-logo">
+            <img class="w-24 h-24" src="{{asset('images/header-logo.png')}}" alt="header-logo">
         </a>
     </div>
     <div>
