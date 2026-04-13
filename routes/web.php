@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -30,8 +26,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::controller(ProductController::class)->group(function () {
-    Route::get('/products','index')->name('products.index');
-    Route::patch('/product/{product}', 'update')->name('product.show');
+    Route::get('/','index')->name('products.index');
+    Route::get('/products/{product}','show')->name('products.show');
+    Route::patch('/product/{product}', 'update')->name('product.update');
     Route::delete('/profile', 'destroy')->name('product.destroy');
 });
 

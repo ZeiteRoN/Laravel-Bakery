@@ -17,10 +17,15 @@ class ProductRepository
             ->when($filters['max_price'] ?? null, function ($query, $maxPrice) {
                 return $query->where('price', '<=', $maxPrice);
             })
-            ->when($filters['categories'] ?? null, function ($query, $categories) {
-                return $query->whereIn('category_id', $categories);
+            ->when($filters['category'] ?? null, function ($query, $categories) {
+                return $query->where('category_id', '=', $categories);
             })
             ->paginate($perPage)
             ->withQueryString();
+    }
+
+    public function getProduct(int $id): Product
+    {
+        return Product::where('id', $id)->first();
     }
 }

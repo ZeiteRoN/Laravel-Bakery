@@ -24,9 +24,11 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show()
+    public function show(Product $product)
     {
-
+        return view('products.show', [
+            'product' => $this->productService->getProduct($product)
+        ]);
     }
 
     public function create()

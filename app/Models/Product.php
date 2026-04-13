@@ -10,13 +10,13 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-      'name',
-      'description',
-      'price',
-      'weight',
-      'height',
-      'category_id',
-      'image_path',
+        'name',
+        'description',
+        'price',
+        'weight',
+        'height',
+        'category_id',
+        'image_path',
     ];
 
     public function category()
@@ -27,5 +27,13 @@ class Product extends Model
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function getImage()
+    {
+        if (empty($this->image_path)) {
+            return 'storage/placeholders/' . strtolower($this->category->name) . '.png';
+        }
+        return 'storage/' . $this->image_path;
     }
 }
