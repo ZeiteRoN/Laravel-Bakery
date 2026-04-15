@@ -12,4 +12,10 @@
             </div>
         </div>
     </div>
+    <div id="editModal" style="display:none; position:fixed; top:20%; left:40%; background:white; padding:20px;">
+        @include('components.admin.edit-product-form')
+    </div>
+    <div id="deleteModal" style="display:none; position:fixed; top:20%; left:40%; background:white; padding:20px;">
+        @include('components.admin.delete-product-window')
+    </div>
 @endsection

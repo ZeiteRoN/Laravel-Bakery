@@ -24,4 +24,9 @@ class ProductService
     {
         return $this->productRepository->getProduct($product->id);
     }
+
+    public function destroy(int $id)
+    {
+        $this->productRepository->destroy($id);
+    }
 }

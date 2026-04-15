@@ -17,7 +17,7 @@
         @enderror
     </div>
 
-    <button type="submit" style="margin-top: 1rem; color: red;">
+    <button type="submit">
         Delete Account
     </button>
 </form>

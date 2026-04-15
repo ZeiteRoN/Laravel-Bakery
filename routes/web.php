@@ -23,8 +23,9 @@ Route::middleware('auth')->group(function () {
 
 Route::controller(ProductController::class)->group(function () {
     Route::get('/','index')->name('products.index');
-    Route::get('/products/{product}','show')->name('products.show');
-    Route::patch('/product/{product}', 'update')->name('product.update');
+    Route::get('/product/{product}','show')->name('product.show');
+    Route::put('/product/{product}', 'update')->name('product.update');
+    Route::delete('/product/{product}', 'destroy')->name('product.destroy');
 });
 
 require __DIR__.'/auth.php';

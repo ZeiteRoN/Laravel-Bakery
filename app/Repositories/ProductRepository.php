@@ -28,4 +28,9 @@ class ProductRepository
     {
         return Product::where('id', $id)->first();
     }
+
+    public function destroy(int $id)
+    {
+        Product::destroy($id);
+    }
 }

@@ -49,13 +49,28 @@ class ProductController extends Controller
 
     }
 
-    public function update(Product $product)
+    public function update(Request $request, Product $product)
     {
+        if (!auth()->user()?->is_admin) {
+            abort(403);
+        }
 
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+        ]);
+
+        $product->update($data);
+
+        return back()->with('success', 'Product updated');
     }
 
-    public function destroy()
+    public function destroy(int $id)
     {
-
+        if (!auth()->user()?->is_admin) {
+            abort(403);
+        }
+        $this->productService->destroy($id);
+        return redirect()->route('products.index');
     }
 }
