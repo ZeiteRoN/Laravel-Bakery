@@ -2,7 +2,7 @@ import './bootstrap';
 
 import Alpine from 'alpinejs';
 
-window.editProductModal = function(id, name, price) {
+window.editProductModal = function(id, name, price, weight, height, stock) {
     const modal = document.getElementById('editModal');
 
     if (!modal) {
@@ -14,6 +14,9 @@ window.editProductModal = function(id, name, price) {
 
     document.getElementById('editName').value = name;
     document.getElementById('editPrice').value = price;
+    document.getElementById('editWeight').value = weight;
+    document.getElementById('editHeight').value = height;
+    document.getElementById('editStock').value = stock;
     document.getElementById('editForm').action = '/product/' + id;
 }
 

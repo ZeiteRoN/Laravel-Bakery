@@ -11,7 +11,8 @@
         @if((Auth::user())->is_admin)
             <div class="flex gap-4">
                 <button
-                    onclick="editProductModal({{ $product->id }}, '{{ $product->name }}', {{ $product->price }})"
+                    onclick="editProductModal({{ $product->id }}, '{{ $product->name }}', {{ $product->price }},
+                    {{ $product->weight }}, {{ $product->height }}, {{ $product->stock }})"
                     class="flex p-2 rounded-lg transition hover:bg-lime-500">
                     <img class="w-8 h-8 grayscale hover:grayscale-0" src="{{asset('images/icons/edit-icon.png')}}"
                          alt="Edit">

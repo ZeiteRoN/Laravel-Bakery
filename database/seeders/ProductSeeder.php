@@ -17,19 +17,28 @@ class ProductSeeder extends Seeder
             'name' => 'Pie',
             'description' => 'This is very delicious pie',
             'category_id' => 1,
-            'image_path' => 'storage/products/placeholder.jpg',
+            'price' => 100,
+            'weight' => 2,
+            'height' => 0.5,
+            'stock' => 2
         ]);
         DB::table('products')->insert([
             'name' => 'Cookie',
             'description' => 'This is very delicious cookie',
             'category_id' => 2,
-            'image_path' => 'storage/products/placeholder.jpg',
+            'price' => 200,
+            'weight' => 2,
+            'height' => 0.5,
+            'stock' => 2
         ]);
         DB::table('products')->insert([
             'name' => 'Cheesecake',
             'description' => 'This is very delicious cheesecake',
             'category_id' => 3,
-            'image_path' => 'storage/products/placeholder.jpg',
+            'price' => 300,
+            'weight' => 2,
+            'height' => 0.5,
+            'stock' => 2
         ]);
     }
 }

@@ -8,14 +8,11 @@
         <h1>Catalog</h1>
     </div>
     @auth
-    <div>
+    <div class="dropdown">
         <button>{{Auth::user()->name}}</button>
-        <div>
+        <div class="content">
             <a href="{{route('profile.edit')}}">Profile</a>
-            <form action="{{route('logout')}}" type="POST">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>
+            <a href="{{route('logout')}}">Logout</a>
         </div>
     </div>
     @endauth

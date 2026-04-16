@@ -1,10 +1,31 @@
-.header-logo {
-    width: 100px;
-    height: 100px;
+.dropdown button {
+    background-color: hsl(0, 0%, 80%);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
 }
-header {
-    display: flex;
-    background: #f2ec33;
-    background: linear-gradient(87deg, rgba(242, 236, 51, 1) 5%, rgba(180, 235, 131, 1) 57%, rgba(103, 171, 48, 1) 94%);;
-    justify-content: space-between;
+.dropdown a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
 }
+.dropdown .content {
+    display: none;
+    position: absolute;
+    background-color: hsl(0, 0%, 95%);
+    min-width: 100px;
+    box-shadow: 2px 2px 5px hsl(0, 0%, 0%, 0.8);
+}
+.dropdown:hover .content {
+    display: block;
+}
+.dropdown:hover .button {
+    background-color: hsl(0, 0%, 70%);
+}
+.dropdown a:hover {
+    background-color: hsl(0, 0%, 70%);
+}
+
+
