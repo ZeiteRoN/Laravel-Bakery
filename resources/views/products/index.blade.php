@@ -12,11 +12,11 @@
             </div>
         </div>
     </div>
-    <div id="editModal" class="modal">
-        <h2>Edit Product</h2>
+    <div id="editModal" class="hidden fixed top-[20%] left-[40%] bg-white p-5 border border-gray-400 rounded-xl shadow-lg">
+        <h2 class="text-center mb-2 font-bold text-2xl border-b-2 border-black">Edit Product</h2>
         @include('components.admin.edit-product-form')
     </div>
-    <div id="deleteModal" class="modal">
+    <div id="deleteModal" class="hidden fixed top-[20%] left-[40%] bg-white p-5 border border-gray-400 rounded-xl shadow-lg">
         @include('components.admin.delete-product-window')
     </div>
 @endsection

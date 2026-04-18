@@ -7,19 +7,7 @@
     <div>
         <h1>Catalog</h1>
     </div>
-    @auth
-    <div class="dropdown">
-        <button>{{Auth::user()->name}}</button>
-        <div class="content">
-            <a href="{{route('profile.edit')}}">Profile</a>
-            <a href="{{route('logout')}}">Logout</a>
-        </div>
+    <div>
+        @include('layouts.partials.dropdown')
     </div>
-    @endauth
-    @guest
-        <div>
-            <a href="{{route('login')}}">Login</a>
-            <a href="{{route('register')}}">Register</a>
-        </div>
-    @endguest
 </header>
