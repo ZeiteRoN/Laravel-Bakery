@@ -26,8 +26,11 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+        $reviews = $product->reviews()->with('user')->get();
+
         return view('content.products.show', [
-            'product' => $this->productService->getProduct($product)
+            'product' => $this->productService->getProduct($product),
+            'reviews' => $reviews
         ]);
     }
 

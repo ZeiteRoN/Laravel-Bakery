@@ -38,4 +38,9 @@ class Product extends Model
 
         return 'storage/placeholders/default.png';
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

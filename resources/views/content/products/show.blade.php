@@ -20,8 +20,18 @@
             </div>
             <div class="flex flex-col mx-auto gap-8 p-8">
                 <div class="">
-                    <h1 class="font-bold text-2xl">Опис:</h1>
+                    <p class="font-bold text-2xl">Опис:</p>
                     {{$product->description}}
+                </div>
+                <div>
+                    <p class="font-bold text-2xl">
+                        Price: {{$product->price}}
+                    </p>
+                </div>
+                <div>
+                    <p class="font-bold text-2xl">
+                        Stock: {{$product->stock}}
+                    </p>
                 </div>
                 <div id="cart" class="flex w-full justify-center">
                     <form action="" method="POST">
@@ -30,6 +40,19 @@
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h2 class="text-2xl font-bold">Reviews</h2>
+            @forelse($reviews as $review)
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    @include('components.review-card', ['review' => $review])
+                </div>
+            @empty
+                <div class="text-center py-8 px-4 border-2 border-dashed border-gray-300 rounded-xl">
+                    <p class="text-gray-500 text-lg">No reviews yet</p>
+                    <p class="text-gray-400 text-sm mt-2">Be the first to review this product!</p>
+                </div>
+            @endforelse
         </div>
     </div>
 @endsection
