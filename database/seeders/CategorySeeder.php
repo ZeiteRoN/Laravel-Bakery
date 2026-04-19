@@ -2,26 +2,65 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class CategorySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Db::table('categories')->insert([
-            'name' => 'Pie',
-        ]);
-        Db::table('categories')->insert([
-            'name' => 'Cookie',
-        ]);
-        Db::table('categories')->insert([
-            'name' => 'Cheesecake',
+        $now = Carbon::now();
+
+        DB::table('categories')->insert([
+            [
+                'id' => 1,
+                'name' => 'Торти',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'id' => 2,
+                'name' => 'Капкейки',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'id' => 3,
+                'name' => 'Макарони',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'id' => 4,
+                'name' => 'Еклери',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'id' => 5,
+                'name' => 'Брауні',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'id' => 6,
+                'name' => 'Печиво',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'id' => 7,
+                'name' => 'Тарти',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'id' => 8,
+                'name' => 'Десерти',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
         ]);
     }
 }

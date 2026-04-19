@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -31,9 +32,10 @@ class Product extends Model
 
     public function getImage()
     {
-        if (empty($this->image_path)) {
-            return 'storage/placeholders/' . strtolower($this->category->name) . '.png';
+        if ($this->image_path && Storage::disk('public')->exists($this->image_path)) {
+            return Storage::url($this->image_path);
         }
-        return 'storage/' . $this->image_path;
+
+        return 'storage/placeholders/default.png';
     }
 }

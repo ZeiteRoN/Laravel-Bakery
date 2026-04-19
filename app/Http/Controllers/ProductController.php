@@ -17,7 +17,7 @@ class ProductController extends Controller
     {
         $filters = $request->only(['search', 'category', 'min_price', 'max_price']);
 
-        return view('products.index',[
+        return view('content.products.index',[
             'products' => $this->productService->getProducts(12, $filters),
             'categories' => Category::all(),
             'filters' => $filters
@@ -26,7 +26,7 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view('products.show', [
+        return view('content.products.show', [
             'product' => $this->productService->getProduct($product)
         ]);
     }

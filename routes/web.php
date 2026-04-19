@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -27,5 +28,7 @@ Route::controller(ProductController::class)->group(function () {
     Route::put('/product/{product}', 'update')->name('product.update');
     Route::delete('/product/{product}', 'destroy')->name('product.destroy');
 });
-
+Route::controller(CategoryController::class)->group(function () {
+   Route::get('/category/{category}','show')->name('categories.show');
+});
 require __DIR__.'/auth.php';

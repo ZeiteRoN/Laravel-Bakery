@@ -1,12 +1,12 @@
 <div>
     <h1>Filters</h1>
-    <form action="" class="flex flex-col gap-4">
+    <form action="{{ route('products.index') }}" class="flex flex-col gap-4">
         <input type="text" name="search" placeholder="Search" value="{{request('search')}}">
         <select name="category" id="category">
             <option value="" selected>Everything</option>
             @foreach($categories as $category)
                 <option value="{{$category->id}}"
-                        @if(request('category') == $category->id) selected @endif>
+                        @if((request('category') instanceof \App\Models\Category ? request('category')->id : request('category')) == $category->id || ($filters['category'] ?? null) == $category->id) selected @endif>
                     {{$category->name}}
                 </option>
             @endforeach

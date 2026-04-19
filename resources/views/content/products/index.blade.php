@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex gap-4">
-        @include('components.filters')
+        @include('components.filters', ['filters' => $filters])
         <div>
             <h1>Products</h1>
             <div class="flex flex-wrap gap-4">
