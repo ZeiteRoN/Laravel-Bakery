@@ -11,10 +11,11 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    server: { // Додайте цей блок
+server: {
+        host: '0.0.0.0',
         hmr: {
-            host: 'localhost',
+            host: 'bakery.local'
         },
-        cors: true, // Дозволяє CORS запити
+        allowedHosts: 'all'
     },
 });

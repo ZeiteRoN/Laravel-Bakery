@@ -42,17 +42,18 @@
             </div>
         </div>
         <div class="flex flex-col gap-4">
-            <h2 class="text-2xl font-bold">Reviews</h2>
-            @forelse($reviews as $review)
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <h2 class="text-2xl font-bold">Відгуки</h2>
+            @include('content.products.review-form')
+            <div class="reviewsList">
+                @forelse($reviews as $review)
                     @include('components.review-card', ['review' => $review])
-                </div>
-            @empty
-                <div class="text-center py-8 px-4 border-2 border-dashed border-gray-300 rounded-xl">
-                    <p class="text-gray-500 text-lg">No reviews yet</p>
-                    <p class="text-gray-400 text-sm mt-2">Be the first to review this product!</p>
-                </div>
-            @endforelse
+                @empty
+                    <div class="text-center py-8 px-4 border-2 border-dashed border-gray-300 rounded-xl">
+                        <p class="text-gray-500 text-lg">No reviews yet</p>
+                        <p class="text-gray-400 text-sm mt-2">Be the first to review this product!</p>
+                    </div>
+                @endforelse
+            </div>
         </div>
     </div>
 @endsection

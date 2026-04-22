@@ -2,4 +2,13 @@
     <h3>{{$review->user->name}}</h3>
     <p>{{$review->text}}</p>
     <p>{{$review->rating}}</p>
+    @auth
+        @if($review->user_id === auth()->id() || auth()->user()->is_admin)
+            <form action="{{ route('reviews.destroy', $review) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-red-500 hover:text-red-600 transition-colors">Delete</button>
+            </form>
+        @endif
+    @endauth
 </div>
