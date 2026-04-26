@@ -2,65 +2,82 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class CategorySeeder extends Seeder
 {
     public function run(): void
     {
-        $now = Carbon::now();
+        $categories = [
+            'Bread',
+            'White Bread',
+            'Whole Grain Bread',
+            'Baguettes',
+            'Croissants',
+            'Buns',
+            'Sweet Buns',
+            'Donuts',
+            'Bagels',
+            'Toast Bread',
+            'Ciabatta',
+            'Sourdough Bread',
 
-        DB::table('categories')->insert([
-            [
-                'id' => 1,
-                'name' => 'Торти',
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'id' => 2,
-                'name' => 'Капкейки',
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'id' => 3,
-                'name' => 'Макарони',
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'id' => 4,
-                'name' => 'Еклери',
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'id' => 5,
-                'name' => 'Брауні',
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'id' => 6,
-                'name' => 'Печиво',
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'id' => 7,
-                'name' => 'Тарти',
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'id' => 8,
-                'name' => 'Десерти',
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-        ]);
+            'Cakes',
+            'Birthday Cakes',
+            'Wedding Cakes',
+            'Chocolate Cakes',
+            'Cheesecakes',
+            'Cupcakes',
+            'Muffins',
+            'Brownies',
+            'Cookies',
+            'Macarons',
+            'Tarts',
+            'Pies',
+
+            'Pastries',
+            'Danish Pastries',
+            'Eclairs',
+            'Strudels',
+            'Cannoli',
+
+            'Desserts',
+            'Puddings',
+            'Ice Cream Cakes',
+            'Fruit Desserts',
+
+            'Breakfast',
+            'Sandwiches',
+            'Toast Sets',
+
+            'Drinks',
+            'Coffee',
+            'Tea',
+            'Hot Chocolate',
+            'Fresh Juice',
+
+            'Seasonal Specials',
+            'Christmas Bakery',
+            'Easter Bakery',
+            'Valentine Specials',
+
+            'Vegan Products',
+            'Gluten Free',
+            'Sugar Free',
+
+            'Snacks',
+            'Pretzels',
+            'Crackers',
+
+            'Gift Boxes',
+            'Party Sets',
+        ];
+
+        foreach ($categories as $category) {
+            Category::create([
+                'name' => $category
+            ]);
+        }
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
@@ -24,17 +25,21 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::controller(ProductController::class)->group(function () {
-    Route::get('/','index')->name('products.index');
+    Route::get('/','index')->name('product.index');
     Route::get('/product/{product}','show')->name('product.show');
     Route::put('/product/{product}', 'update')->name('product.update');
     Route::delete('/product/{product}', 'destroy')->name('product.destroy');
 });
 Route::controller(CategoryController::class)->group(function () {
-   Route::get('/category/{category}','show')->name('categories.show');
+   Route::get('/category','index')->name('category.index');
+   Route::get('/category/{category}','show')->name('category.show');
 });
 
 Route::controller(ReviewController::class)->group(function () {
     Route::post('/reviews', 'store')->name('reviews.store');
     Route::delete('/reviews/{review}', 'destroy')->name('reviews.destroy');
 });
+
+Route::get('/contact', [Controller::class, 'contact'])->name('contact');
+
 require __DIR__.'/auth.php';

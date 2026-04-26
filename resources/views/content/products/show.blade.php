@@ -3,9 +3,10 @@
 @section('content')
     <div class="flex flex-col gap-4 p-6">
         <nav aria-label="Breadcrumb" class="flex gap-2 text-sm">
-            <a href="{{ route('products.index') }}" class="hover:text-blue-600 transition-colors">Main</a>
+            <a href="{{ route('product.index') }}" class="hover:text-blue-600 transition-colors">Main</a>
             <span aria-hidden="true">/</span>
-            <a href="{{ route('categories.show', $product->category) }}" class="hover:text-blue-600 transition-colors">{{ $product->category->name }}</a>
+            <a href="{{ route('category.show', $product->category) }}"
+               class="hover:text-blue-600 transition-colors">{{ $product->category->name }}</a>
             <span aria-hidden="true">/</span>
             <span class="text-gray-600 font-medium" aria-current="page">{{ $product->name }}</span>
         </nav>
@@ -35,7 +36,10 @@
                 </div>
                 <div id="cart" class="flex w-full justify-center">
                     <form action="" method="POST">
-                        <button type="submit" class="text-4xl font-bold bg-green-300 rounded-xl p-4 hover:bg-green-400 hover:scale-105 transition-all">Add to cart</button>
+                        <button type="submit"
+                                class="text-4xl font-bold bg-green-300 rounded-xl p-4 hover:bg-green-400 hover:scale-105 transition-all">
+                            Add to cart
+                        </button>
                         @csrf
                     </form>
                 </div>
@@ -43,7 +47,7 @@
         </div>
         <div class="flex flex-col gap-4">
             <h2 class="text-2xl font-bold">Відгуки</h2>
-            @include('content.products.review-form')
+            @include('components.review-form')
             <div class="reviewsList">
                 @forelse($reviews as $review)
                     @include('components.review-card', ['review' => $review])

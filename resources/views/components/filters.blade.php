@@ -1,6 +1,6 @@
 <div>
     <h1>Filters</h1>
-    <form action="{{ route('products.index') }}" class="flex flex-col gap-4">
+    <form action="{{ route('product.index') }}" class="flex flex-col gap-4">
         <input type="text" name="search" placeholder="Search" value="{{request('search')}}">
         <select name="category" id="category">
             <option value="" selected>Everything</option>
@@ -19,7 +19,7 @@
         </button>
         <a class="border text-center bg-red-200 border-gray-100 rounded hover:scale-105 transition-xl
          duration-200 hover:bg-red-300 hover:cursor-pointer"
-           type="reset" href="{{route('products.index')}}">
+           type="reset" href="{{route('product.index')}}">
             Reset
         </a>
     </form>

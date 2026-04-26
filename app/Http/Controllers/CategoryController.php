@@ -14,6 +14,13 @@ class CategoryController extends Controller
         private CategoryService $categoryService
     ){}
 
+    public function index()
+    {
+        return view('content.categories.index', [
+            'categories' => $this->categoryService->getCategories()
+        ]);
+    }
+
     public function show(Category $category)
     {
         $filters = ['category' => $category->id];

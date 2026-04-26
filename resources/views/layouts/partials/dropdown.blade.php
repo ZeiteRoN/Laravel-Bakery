@@ -1,6 +1,6 @@
 @auth
 <div class="relative group">
-    <button class="bg-gray-400 text-white px-4 py-2.5 border-none cursor-pointer hover:bg-gray-500 transition-colors">
+    <button class="bg-rose-600 border rounded-2xl hover:rounded-none text-white px-4 py-2.5 border-none cursor-pointer transition-all">
         {{Auth::user()->name}}
     </button>
     <div class="hidden group-hover:block absolute bg-gray-100 min-w-[100px] shadow-lg">
