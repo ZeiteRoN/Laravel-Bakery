@@ -1,18 +1,28 @@
 @auth
-<div class="relative group">
-    <button class="bg-rose-600 border rounded-2xl hover:rounded-none text-white px-4 py-2.5 border-none cursor-pointer transition-all">
-        {{Auth::user()->name}}
-    </button>
-    <div class="hidden group-hover:block absolute bg-gray-100 min-w-[100px] shadow-lg">
-        <a href="{{route('profile.edit')}}" class="block text-black no-underline px-4 py-2.5 hover:bg-gray-500 hover:text-white transition-colors">Profile</a>
-        <a href="{{route('logout')}}" class="block text-black no-underline px-4 py-2.5 hover:bg-gray-500 hover:text-white transition-colors">Logout</a>
+    <div class="relative group">
+        <button
+            class="bg-rose-600 border rounded-2xl hover:rounded-none text-white px-4 py-2.5 border-none cursor-pointer transition-all">
+            {{Auth::user()->name}}
+        </button>
+        <div class="hidden group-hover:block absolute bg-gray-100 min-w-[100px] shadow-lg">
+            @if(Auth::user()->is_admin)
+                <a href="{{route('user.admin')}}"
+                   class="block text-black no-underline px-4 py-2.5 hover:bg-gray-500 hover:text-white transition-colors">
+                    Admin
+                </a>
+            @endif
+            <a href="{{route('profile.edit')}}"
+               class="block text-black no-underline px-4 py-2.5 hover:bg-gray-500 hover:text-white transition-colors">Profile</a>
+            <a href="{{route('logout')}}"
+               class="block text-black no-underline px-4 py-2.5 hover:bg-gray-500 hover:text-white transition-colors">Logout</a>
+        </div>
     </div>
-</div>
 @endauth
 @guest
     <div class="flex gap-2">
         <a href="{{route('register')}}">
-            <img class="flex w-12 h-12 hover:scale-105 transition" src="{{asset('images/icons/signup-icon.png')}}" alt="Signup">
+            <img class="flex w-12 h-12 hover:scale-105 transition" src="{{asset('images/icons/signup-icon.png')}}"
+                 alt="Signup">
         </a>
         <a class="flex w-12 h-12 hover:scale-105 transition" href="{{route('login')}}">
             <img class="w-12 h-12" src="{{asset('images/icons/login-icon.png')}}" alt="Login">

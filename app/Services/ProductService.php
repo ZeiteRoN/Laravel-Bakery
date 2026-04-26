@@ -22,6 +22,16 @@ class ProductService
         return $this->productRepository->getProduct($product->id);
     }
 
+    public function createProduct(array $data): Product
+    {
+        return $this->productRepository->create($data);
+    }
+
+    public function updateProduct(int $id, array $data): Product
+    {
+        return $this->productRepository->update($id, $data);
+    }
+
     public function destroy(int $id)
     {
         $this->productRepository->destroy($id);

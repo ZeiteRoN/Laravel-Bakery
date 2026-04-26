@@ -10,7 +10,7 @@
         flex items-center text-2xl font-semibold tracking-wider
          hover:scale-105 transition-all uppercase"
            href="{{route('product.index')}}">
-            Catalog
+            Home
         </a>
         <a class="{{request()->routeIs('category.index') ? 'text-gray-600' : 'text-white'}}
         flex items-center text-2xl font-semibold tracking-wider

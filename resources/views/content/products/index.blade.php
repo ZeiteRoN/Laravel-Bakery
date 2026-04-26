@@ -12,11 +12,24 @@
             </div>
         </div>
     </div>
-    <div id="editModal" class="hidden fixed top-[20%] left-[40%] bg-white p-5 border border-gray-400 rounded-xl shadow-lg">
-        <h2 class="text-center mb-2 font-bold text-2xl border-b-2 border-black">Edit Product</h2>
-        @include('components.admin.edit-product-form')
+    <div id="editModal"
+         class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white p-5 border border-gray-400 rounded-xl shadow-lg max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-bold text-xl">Edit Product</h2>
+                <button onclick="closeModal('editModal')" class="text-gray-500 hover:text-gray-700 text-2xl leading-none">&times;</button>
+            </div>
+            @include('components.admin.edit-product-form')
+        </div>
     </div>
-    <div id="deleteModal" class="hidden fixed top-[20%] left-[40%] bg-white p-5 border border-gray-400 rounded-xl shadow-lg">
-        @include('components.admin.delete-product-window')
+    <div id="deleteModal"
+         class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white p-5 border border-gray-400 rounded-xl shadow-lg max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-bold text-xl">Delete Product</h2>
+                <button onclick="closeModal('deleteModal')" class="text-gray-500 hover:text-gray-700 text-2xl leading-none">&times;</button>
+            </div>
+            @include('components.admin.delete-product-window')
+        </div>
     </div>
 @endsection

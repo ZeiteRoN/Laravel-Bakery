@@ -18,6 +18,8 @@ class Product extends Model
         'height',
         'category_id',
         'image_path',
+        'stock',
+        'is_active',
     ];
 
     public function category()

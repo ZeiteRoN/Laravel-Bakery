@@ -34,17 +34,24 @@ class ProductController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        $categories = Category::all();
-
-        return view('products.create', compact('categories'));
-    }
-
     public function store(Request $request)
     {
-        Product::create($request->validated());
-        return redirect()->route('products.index');
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric',
+            'weight' => 'required|numeric',
+            'height' => 'required|numeric',
+            'category_id' => 'required|exists:categories,id',
+            'stock' => 'required|integer',
+            'image_path' => 'nullable|image|max:2048',
+        ]);
+        if ($request->hasFile('image_path')) {
+            $data['image_path'] = $request->file('image_path')->store('products', 'public');
+        }
+        $data['is_active'] = $request->has('is_active');
+        $this->productService->createProduct($data);
+        return redirect()->route('product.index');
     }
 
     public function edit()
@@ -57,16 +64,21 @@ class ProductController extends Controller
         if (!auth()->user()?->is_admin) {
             abort(403);
         }
-
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
             'weight' => 'required|numeric|min:0',
             'height' => 'required|numeric|min:0',
             'stock' => 'required|numeric|min:0',
+            'category_id' => 'sometimes|exists:categories,id',
+            'image_path' => 'nullable|image|max:2048',
         ]);
 
-        $product->update($data);
+        if ($request->hasFile('image_path')) {
+            $data['image_path'] = $request->file('image_path')->store('products', 'public');
+        }
+
+        $this->productService->updateProduct($product->id, $data);
 
         return back()->with('success', 'Product updated');
     }
@@ -77,6 +89,6 @@ class ProductController extends Controller
             abort(403);
         }
         $this->productService->destroy($id);
-        return redirect()->route('products.index');
+        return redirect()->route('product.index');
     }
 }

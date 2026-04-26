@@ -16,6 +16,7 @@ server: {
         hmr: {
             host: 'bakery.local'
         },
+        cors: true,
         allowedHosts: 'all'
     },
 });

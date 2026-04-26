@@ -29,6 +29,38 @@ class ProductRepository
         return Product::where('id', $id)->first();
     }
 
+    public function create(array $data): Product
+    {
+        return Product::create([
+            'name' => $data['name'],
+            'description' => $data['description'] ?? null,
+            'price' => $data['price'],
+            'weight' => $data['weight'],
+            'height' => $data['height'],
+            'category_id' => $data['category_id'],
+            'image_path' => $data['image_path'] ?? null,
+            'stock' => $data['stock'],
+            'is_active' => $data['is_active'] ?? true
+        ]);
+    }
+
+    public function update(int $id, array $data): Product
+    {
+        $product = Product::findOrFail($id);
+        $product->update([
+            'name' => $data['name'],
+            'description' => $data['description'] ?? $product->description,
+            'price' => $data['price'],
+            'weight' => $data['weight'],
+            'height' => $data['height'],
+            'category_id' => $data['category_id'] ?? $product->category_id,
+            'image_path' => $data['image_path'] ?? $product->image_path,
+            'stock' => $data['stock'],
+            'is_active' => $data['is_active'] ?? $product->is_active
+        ]);
+        return $product;
+    }
+
     public function destroy(int $id)
     {
         Product::destroy($id);
