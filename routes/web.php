@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
@@ -44,6 +46,25 @@ Route::controller(CategoryController::class)->group(function () {
 Route::controller(ReviewController::class)->group(function () {
     Route::post('/reviews', 'store')->name('reviews.store');
     Route::delete('/reviews/{review}', 'destroy')->name('reviews.destroy');
+});
+
+Route::middleware('auth')->controller(CartController::class)->group(function () {
+    Route::get('/cart', 'index')->name('cart.index');
+    Route::post('/cart/add', 'add')->name('cart.add');
+    Route::put('/cart/{cartItemId}', 'update')->name('cart.update');
+    Route::delete('/cart/{cartItemId}', 'remove')->name('cart.remove');
+    Route::get('/cart/counter', 'getCounter')->name('cart.counter');
+});
+
+Route::middleware('auth')->controller(OrderController::class)->group(function () {
+    Route::get('/orders', 'index')->name('orders.index');
+    Route::get('/orders/{orderId}', 'show')->name('orders.show');
+    Route::post('/checkout', 'checkout')->name('checkout');
+    Route::put('/orders/{orderId}/status', 'updateStatus')->name('orders.updateStatus');
+});
+
+Route::middleware('auth')->controller(OrderController::class)->group(function () {
+    Route::get('/admin/orders', 'adminIndex')->name('admin.orders.index');
 });
 
 Route::get('/contact', [Controller::class, 'contact'])->name('contact');
